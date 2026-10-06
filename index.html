@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NotiSur | Portal Digital de Información y Actualidad</title>
+  <meta name="description" content="NotiSur es un medio digital independiente de comunicación, análisis económico, tecnología, innovación y actualidad regional comprometido con la veracidad y el rigor periodístico.">
+  <meta name="author" content="Editorial NotiSur">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Meta Social -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://notisur.com/">
+  <meta property="og:title" content="NotiSur | Portal Digital de Información">
+  <meta property="og:description" content="Periodismo riguroso, análisis económico y actualidad corporativa y regional.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=1200&q=80">
+
+  <!-- Google Fonts & Tailwind CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,400;0,700;1,300&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e3a8a',
+              900: '#0f172a',
+              950: '#0a0f1d',
+            },
+            accent: {
+              500: '#0284c7',
+              600: '#0369a1',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            serif: ['Merriweather', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .line-clamp-3 {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    /* Estilos de impresión y modales */
+    .modal-backdrop {
+      background-color: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(4px);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased flex flex-col min-h-screen">
+
+  <!-- Top Bar Informativa / Compliance / Fecha en vivo -->
+  <div class="bg-brand-950 text-slate-300 text-xs border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex flex-col sm:flex-row justify-between items-center gap-2">
+      <div class="flex items-center space-x-4">
+        <span class="inline-flex items-center gap-1.5 text-slate-400">
+          <i data-lucide="calendar" class="w-3.5 h-3.5 text-blue-400"></i>
+          <span id="current-date">Martes, 6 de Octubre de 2026</span>
+        </span>
+        <span class="hidden md:inline text-slate-600">|</span>
+        <span class="hidden md:inline-flex items-center gap-1.5 text-slate-400">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5 text-emerald-400"></i>
+          Periodismo Certificado & Políticas KYC/GDPR Cumplidas
+        </span>
+      </div>
+      <div class="flex items-center space-x-4">
+        <a href="mailto:contacto@notisur.com" class="hover:text-white transition flex items-center gap-1">
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-blue-400"></i>
+          contacto@notisur.com
+        </a>
+        <span class="text-slate-600">|</span>
+        <span class="text-xs bg-brand-800 text-blue-200 px-2 py-0.5 rounded font-mono">Edición Digital v2.4</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header & Navegación -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-20">
+        <!-- Logo Tipográfico Corporativo -->
+        <div class="flex items-center">
+          <a href="#" class="flex flex-col group">
+            <div class="flex items-center space-x-2">
+              <span class="w-3 h-8 bg-brand-800 rounded-sm"></span>
+              <span class="text-2xl sm:text-3xl font-extrabold tracking-tight text-brand-900 group-hover:text-brand-800 transition">NOTISUR</span>
+            </div>
+            <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-widest text-slate-500 pl-5">
+              Portal Digital de Información
+            </span>
+          </a>
+        </div>
+
+        <!-- Menú Desktop -->
+        <nav class="hidden lg:flex items-center space-x-7 text-sm font-medium text-slate-700">
+          <a href="#inicio" class="text-brand-800 font-semibold border-b-2 border-brand-800 pb-1">Inicio</a>
+          <a href="#noticias" class="hover:text-brand-800 transition pb-1">Noticias</a>
+          <a href="#quienes-somos" class="hover:text-brand-800 transition pb-1">Quiénes Somos</a>
+          <a href="#newsletter" class="hover:text-brand-800 transition pb-1">Newsletter</a>
+          <a href="#contacto" class="hover:text-brand-800 transition pb-1">Contacto</a>
+        </nav>
+
+        <!-- CTA Newsletter Header -->
+        <div class="hidden sm:flex items-center space-x-3">
+          <a href="#newsletter" class="inline-flex items-center gap-2 bg-brand-900 hover:bg-brand-800 text-white text-xs font-semibold px-4 py-2.5 rounded-lg shadow-sm transition">
+            <i data-lucide="bell" class="w-4 h-4 text-blue-300"></i>
+            Suscribirme al Boletín
+          </a>
+        </div>
+
+        <!-- Botón Mobile Menu -->
+        <div class="flex items-center lg:hidden">
+          <button id="mobile-menu-btn" type="button" class="p-2 rounded-md text-slate-600 hover:text-brand-900 hover:bg-slate-100 focus:outline-none" aria-label="Abrir menú">
+            <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Menú Desplegable Mobile -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200 bg-white px-4 pt-3 pb-6 space-y-2">
+      <a href="#inicio" class="mobile-link block px-3 py-2 rounded-md text-base font-semibold text-brand-900 bg-slate-50">Inicio</a>
+      <a href="#noticias" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50">Noticias</a>
+      <a href="#quienes-somos" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50">Quiénes Somos</a>
+      <a href="#newsletter" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50">Suscripción / Newsletter</a>
+      <a href="#contacto" class="mobile-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50">Contacto</a>
+      <div class="pt-3 border-t border-slate-100">
+        <a href="#newsletter" class="mobile-link w-full inline-flex justify-center items-center gap-2 bg-brand-900 text-white text-sm font-semibold px-4 py-2.5 rounded-lg">
+          <i data-lucide="mail" class="w-4 h-4"></i> Suscripción Segura
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Banner de Última Hora (Ticker) -->
+  <div class="bg-slate-100 border-b border-slate-200 py-2.5">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center overflow-hidden">
+      <span class="inline-flex items-center gap-1.5 bg-red-600 text-white text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm shrink-0 mr-3">
+        <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+        Última Hora
+      </span>
+      <div class="text-xs sm:text-sm text-slate-700 font-medium truncate flex-1">
+        <span class="text-slate-500 font-semibold">[Economía]</span> El Banco Central proyecta un crecimiento del 3.8% en el sector manufacturero y de exportaciones para el cierre trimestral.
+      </div>
+    </div>
+  </div>
+
+  <main class="flex-grow">
+    <!-- Hero & Noticias Principales -->
+    <section id="inicio" class="py-8 lg:py-12 bg-white border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+          <!-- Noticia Principal (Columna Grande 8 cols) -->
+          <article class="lg:col-span-8 group cursor-pointer" onclick="openArticleModal('p1')">
+            <div class="relative overflow-hidden rounded-xl bg-slate-900 mb-5 shadow-sm">
+              <img src="https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=80" 
+                   alt="Análisis macroeconómico y comercio regional" 
+                   class="w-full h-[320px] sm:h-[420px] object-cover opacity-90 group-hover:scale-105 transition duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent"></div>
+              <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-8 text-white">
+                <span class="bg-blue-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded">
+                  Economía & Finanzas
+                </span>
+                <h1 class="font-serif text-2xl sm:text-4xl font-bold mt-3 mb-2 leading-tight group-hover:text-blue-200 transition">
+                  Infraestructura logística e integración portuaria: el motor de la recuperación productiva regional
+                </h1>
+                <p class="text-slate-300 text-sm sm:text-base hidden sm:block line-clamp-2">
+                  Un análisis detallado sobre cómo la modernización de los corredores viales y terminales marítimas está redefiniendo los costos de exportación y la atracción de inversiones directas.
+                </p>
+                <div class="flex items-center text-xs text-slate-400 mt-4 space-x-4">
+                  <span class="flex items-center gap-1"><i data-lucide="user" class="w-3.5 h-3.5"></i> Lic. Marcos V. Rivas</span>
+                  <span>•</span>
+                  <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5"></i> Hace 2 horas</span>
+                  <span>•</span>
+                  <span>Lectura: 5 min</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Columna Lateral de Destacadas (4 cols) -->
+          <div class="lg:col-span-4 flex flex-col space-y-6">
+            <div class="border-b-2 border-brand-900 pb-2 flex justify-between items-center">
+              <h2 class="text-sm font-bold uppercase tracking-wider text-brand-950">Análisis Destacado</h2>
+              <span class="text-xs text-blue-700 font-semibold">Exclusivo</span>
+            </div>
+
+            <!-- Card Lateral 1 -->
+            <article class="flex gap-4 pb-5 border-b border-slate-100 group cursor-pointer" onclick="openArticleModal('p2')">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=300&q=80" 
+                   alt="Innovación Tecnológica" 
+                   class="w-24 h-24 object-cover rounded-lg shrink-0 group-hover:opacity-90 transition">
+              <div class="flex flex-col justify-between">
+                <div>
+                  <span class="text-[11px] font-bold text-blue-700 uppercase">Tecnología</span>
+                  <h3 class="font-serif text-sm font-bold text-slate-900 group-hover:text-blue-700 transition leading-snug line-clamp-2">
+                    Ciberseguridad y soberanía de datos en los sistemas empresariales modernos
+                  </h3>
+                </div>
+                <span class="text-[11px] text-slate-500">Por Redacción Tech • Hoy</span>
+              </div>
+            </article>
+
+            <!-- Card Lateral 2 -->
+            <article class="flex gap-4 pb-5 border-b border-slate-100 group cursor-pointer" onclick="openArticleModal('p3')">
+              <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=300&q=80" 
+                   alt="Gestión corporativa" 
+                   class="w-24 h-24 object-cover rounded-lg shrink-0 group-hover:opacity-90 transition">
+              <div class="flex flex-col justify-between">
+                <div>
+                  <span class="text-[11px] font-bold text-emerald-700 uppercase">Empresas</span>
+                  <h3 class="font-serif text-sm font-bold text-slate-900 group-hover:text-blue-700 transition leading-snug line-clamp-2">
+                    Transición energética y criterios ESG en compañías del cono sur
+                  </h3>
+                </div>
+                <span class="text-[11px] text-slate-500">Por Dra. Elena Morales • Ayer</span>
+              </div>
+            </article>
+
+            <!-- Card Lateral 3 -->
+            <article class="flex gap-4 group cursor-pointer" onclick="openArticleModal('p4')">
+              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=300&q=80" 
+                   alt="Telecomunicaciones" 
+                   class="w-24 h-24 object-cover rounded-lg shrink-0 group-hover:opacity-90 transition">
+              <div class="flex flex-col justify-between">
+                <div>
+                  <span class="text-[11px] font-bold text-indigo-700 uppercase">Conectividad</span>
+                  <h3 class="font-serif text-sm font-bold text-slate-900 group-hover:text-blue-700 transition leading-snug line-clamp-2">
+                    Despliegue de fibra óptica y conectividad satelital en zonas productivas rurales
+                  </h3>
+                </div>
+                <span class="text-[11px] text-slate-500">Por Carlos Benítez • Ayer</span>
+              </div>
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de Artículos y Cobertura Temática (Grid) -->
+    <section id="noticias" class="py-12 bg-slate-50">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col sm:flex-row justify-between items-baseline mb-8 pb-3 border-b border-slate-200">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-blue-700">Edición Continua</span>
+            <h2 class="text-2xl font-extrabold text-brand-900 font-serif">Actualidad & Reportajes Especiales</h2>
+          </div>
+          <div class="mt-2 sm:mt-0 flex gap-2">
+            <button class="text-xs font-semibold px-3 py-1 bg-white border border-slate-300 rounded-full hover:bg-slate-100 text-slate-700">Todos</button>
+            <button class="text-xs font-semibold px-3 py-1 bg-white border border-slate-300 rounded-full hover:bg-slate-100 text-slate-700">Economía</button>
+            <button class="text-xs font-semibold px-3 py-1 bg-white border border-slate-300 rounded-full hover:bg-slate-100 text-slate-700">Innovación</button>
+            <button class="text-xs font-semibold px-3 py-1 bg-white border border-slate-300 rounded-full hover:bg-slate-100 text-slate-700">Políticas Públicas</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+          <!-- Noticia 1 -->
+          <article class="bg-white rounded-xl shadow-sm border border-slate-200/80 overflow-hidden flex flex-col hover:shadow-md transition">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" 
+                 alt="Desarrollo Urbano y Sustentabilidad" 
+                 class="h-48 w-full object-cover">
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between text-xs mb-2">
+                  <span class="font-bold text-blue-700 uppercase">Sociedad & Urbanismo</span>
+                  <span class="text-slate-400">05 Oct 2026</span>
+                </div>
+                <h3 class="font-serif font-bold text-lg text-slate-900 mb-2 leading-snug hover:text-blue-700 cursor-pointer" onclick="openArticleModal('p5')">
+                  Modernización urbana y movilidad inteligente en ciudades intermedias
+                </h3>
+                <p class="text-slate-600 text-sm line-clamp-3 mb-4">
+                  Las inversiones conjuntas entre el sector público y privado buscan mitigar la congestión vehicular y reducir la huella de carbono en áreas metropolitanas en expansión.
+                </p>
+              </div>
+              <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                <span>Por Andrea Salgado</span>
+                <button onclick="openArticleModal('p5')" class="text-brand-800 font-semibold hover:underline inline-flex items-center gap-1">
+                  Leer artículo <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Noticia 2 -->
+          <article class="bg-white rounded-xl shadow-sm border border-slate-200/80 overflow-hidden flex flex-col hover:shadow-md transition">
+            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80" 
+                 alt="Finanzas y Mercados" 
+                 class="h-48 w-full object-cover">
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between text-xs mb-2">
+                  <span class="font-bold text-emerald-700 uppercase">Mercados Financieros</span>
+                  <span class="text-slate-400">04 Oct 2026</span>
+                </div>
+                <h3 class="font-serif font-bold text-lg text-slate-900 mb-2 leading-snug hover:text-blue-700 cursor-pointer" onclick="openArticleModal('p6')">
+                  Estabilidad monetaria e impacto en las tasas de interés corporativas
+                </h3>
+                <p class="text-slate-600 text-sm line-clamp-3 mb-4">
+                  Los analistas estiman un trimestre de contención inflacionaria que permitirá aperturas de crédito más flexibles para micro y medianas empresas productivas.
+                </p>
+              </div>
+              <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                <span>Por Fernando Castro</span>
+                <button onclick="openArticleModal('p6')" class="text-brand-800 font-semibold hover:underline inline-flex items-center gap-1">
+                  Leer artículo <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Noticia 3 -->
+          <article class="bg-white rounded-xl shadow-sm border border-slate-200/80 overflow-hidden flex flex-col hover:shadow-md transition">
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=600&q=80" 
+                 alt="Salud e Investigación" 
+                 class="h-48 w-full object-cover">
+            <div class="p-6 flex-1 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between text-xs mb-2">
+                  <span class="font-bold text-purple-700 uppercase">Salud & Ciencia</span>
+                  <span class="text-slate-400">03 Oct 2026</span>
+                </div>
+                <h3 class="font-serif font-bold text-lg text-slate-900 mb-2 leading-snug hover:text-blue-700 cursor-pointer" onclick="openArticleModal('p7')">
+                  Nuevos centros de diagnóstico biomédico refuerzan la red sanitaria
+                </h3>
+                <p class="text-slate-600 text-sm line-clamp-3 mb-4">
+                  La incorporación de equipamiento de última generación agiliza la detección temprana de patologías cardiovasculares y metabólicas en el sistema de salud.
+                </p>
+              </div>
+              <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                <span>Por Lic. Sofía Paredes</span>
+                <button onclick="openArticleModal('p7')" class="text-brand-800 font-semibold hover:underline inline-flex items-center gap-1">
+                  Leer artículo <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN CRUCIAL KYC: Boletín Informativo con Double Opt-In & Compliance ZeptoMail/Zoho -->
+    <section id="newsletter" class="py-16 bg-brand-900 text-white relative overflow-hidden">
+      <!-- Decoración sutil de fondo -->
+      <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-20 -top-20 w-96 h-96 bg-brand-800/30 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="bg-brand-950/70 border border-slate-800 p-8 sm:p-12 rounded-2xl shadow-xl backdrop-blur-sm">
+          
+          <div class="text-center max-w-2xl mx-auto mb-8">
+            <span class="inline-flex items-center gap-2 bg-blue-900/60 text-blue-300 text-xs font-semibold px-3 py-1 rounded-full border border-blue-700/50 mb-3">
+              <i data-lucide="mail-check" class="w-3.5 h-3.5"></i> Suscripción Segura • Double Opt-In Garantizado
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-serif font-bold text-white tracking-tight">
+              Reciba el Resumen Informativo Matutino de NotiSur
+            </h2>
+            <p class="text-slate-300 text-sm sm:text-base mt-3 leading-relaxed">
+              Enviamos un compendio exclusivo con las noticias económicas, corporativas y de coyuntura más relevantes directamente a su casilla de correo electrónico.
+            </p>
+          </div>
+
+          <!-- Formulario de Suscripción -->
+          <form id="newsletter-form" onsubmit="handleNewsletterSubmit(event)" class="max-w-xl mx-auto space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="newsletter-name" class="block text-xs font-medium text-slate-300 mb-1">Nombre Completo *</label>
+                <div class="relative">
+                  <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
+                    <i data-lucide="user" class="w-4 h-4"></i>
+                  </span>
+                  <input type="text" id="newsletter-name" required placeholder="Ej. Juan Pérez" 
+                         class="w-full pl-9 pr-3 py-2.5 bg-slate-900/90 border border-slate-700 rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+              </div>
+              <div>
+                <label for="newsletter-email" class="block text-xs font-medium text-slate-300 mb-1">Correo Electrónico Corporativo / Personal *</label>
+                <div class="relative">
+                  <span class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-slate-400">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                  </span>
+                  <input type="email" id="newsletter-email" required placeholder="ejemplo@empresa.com" 
+                         class="w-full pl-9 pr-3 py-2.5 bg-slate-900/90 border border-slate-700 rounded-lg text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+              </div>
+            </div>
+
+            <!-- Checkbox de Consentimiento Explícito OBLIGATORIO (Cumplimiento GDPR/CAN-SPAM/ZeptoMail) -->
+            <div class="pt-2">
+              <label class="flex items-start space-x-3 cursor-pointer">
+                <input type="checkbox" id="newsletter-consent" required 
+                       class="mt-1 w-4 h-4 rounded border-slate-700 bg-slate-900 text-blue-600 focus:ring-blue-500 focus:ring-offset-slate-900">
+                <span class="text-xs text-slate-300 leading-relaxed">
+                  Acepto expresamente los <button type="button" onclick="openModal('modal-terms')" class="text-blue-400 underline hover:text-blue-300">Términos del Servicio</button> y la <button type="button" onclick="openModal('modal-privacy')" class="text-blue-400 underline hover:text-blue-300">Política de Privacidad y Tratamiento de Datos</button> para recibir el boletín y alertas informativas en mi correo electrónico.
+                </span>
+              </label>
+            </div>
+
+            <div class="pt-2">
+              <button type="submit" id="newsletter-submit-btn" 
+                      class="w-full py-3 px-6 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg shadow-md transition flex items-center justify-center gap-2 text-sm">
+                <span>Suscribirme Voluntariamente</span>
+                <i data-lucide="send" class="w-4 h-4"></i>
+              </button>
+            </div>
+
+            <!-- Mensaje de Feedback -->
+            <div id="newsletter-success" class="hidden p-4 rounded-lg bg-emerald-950/80 border border-emerald-700 text-emerald-200 text-xs">
+              <div class="flex items-start gap-2">
+                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+                <div>
+                  <strong>¡Solicitud de suscripción registrada con éxito!</strong>
+                  <p class="mt-1 text-slate-300">Hemos enviado un correo de confirmación (Double Opt-In) a su casilla. Por favor revise su bandeja de entrada para verificar su identidad y activar el servicio. Si no lo ve, verifique su carpeta de correo no deseado.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Nota de Consentimiento y Desuscripción Fácil -->
+            <div class="text-[11px] text-slate-400 text-center space-y-1.5 pt-3 border-t border-slate-800/80">
+              <p class="flex items-center justify-center gap-1">
+                <i data-lucide="lock" class="w-3 h-3 text-emerald-400"></i>
+                <strong>Compromiso Anti-Spam:</strong> No comercializamos ni transferimos su correo electrónico a terceros.
+              </p>
+              <p>
+                Cada correo incluye un enlace de baja instantánea en un solo clic (One-Click Unsubscribe), conforme a los estándares internacionales de entregabilidad y cumplimiento de ZeptoMail / Zoho CPaaS.
+              </p>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección Quiénes Somos / Misión & Estándares Editoriales -->
+    <section id="quienes-somos" class="py-16 bg-white border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <div class="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-blue-700 mb-2">
+              <i data-lucide="award" class="w-4 h-4"></i> Transparencia Editorial
+            </div>
+            <h2 class="text-3xl font-extrabold text-brand-900 font-serif leading-tight">
+              Periodismo independiente con rigor analítico y responsabilidad cívica
+            </h2>
+            <p class="text-slate-600 mt-4 leading-relaxed text-sm sm:text-base">
+              <strong>NotiSur</strong> es un portal digital de información, investigación económica y análisis corporativo fundado con el firme compromiso de ofrecer cobertura fidedigna, neutral y oportuna sobre los acontecimientos que impactan el desarrollo productivo y social de nuestra región.
+            </p>
+            <p class="text-slate-600 mt-3 leading-relaxed text-sm sm:text-base">
+              Nuestra sala de redacción opera bajo un riguroso código de ética profesional: verificamos la fuente primaria de cada hecho, contrastamos datos macroeconómicos oficiales y respetamos escrupulosamente los derechos de propiedad intelectual y privacidad de nuestros lectores y fuentes.
+            </p>
+
+            <div class="grid grid-cols-2 gap-4 mt-6">
+              <div class="p-4 bg-slate-50 border border-slate-200 rounded-lg">
+                <div class="text-brand-800 font-bold text-lg font-serif">100% Verificado</div>
+                <div class="text-xs text-slate-500 mt-1">Protocolo estricto de comprobación de fuentes y datos oficiales.</div>
+              </div>
+              <div class="p-4 bg-slate-50 border border-slate-200 rounded-lg">
+                <div class="text-brand-800 font-bold text-lg font-serif">Ética Digital</div>
+                <div class="text-xs text-slate-500 mt-1">Cero clickbait, respeto irrestricto de políticas de correo y privacidad.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Equipo Editorial -->
+          <div class="bg-slate-50 border border-slate-200 p-8 rounded-2xl">
+            <h3 class="text-lg font-bold text-brand-900 font-serif mb-6 flex items-center gap-2">
+              <i data-lucide="users" class="w-5 h-5 text-blue-700"></i>
+              Consejo Editorial y Dirección
+            </h3>
+
+            <div class="space-y-4">
+              <div class="flex items-center gap-4 bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-sm">
+                <div class="w-12 h-12 rounded-full bg-brand-900 text-white flex items-center justify-center font-bold text-sm shrink-0">
+                  MR
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-slate-900">Lic. Marcos V. Rivas</h4>
+                  <p class="text-xs text-blue-700 font-medium">Director Editorial y Economía</p>
+                  <p class="text-[11px] text-slate-500 mt-0.5">Especialista en mercados de capitales y comercio regional.</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-sm">
+                <div class="w-12 h-12 rounded-full bg-brand-800 text-white flex items-center justify-center font-bold text-sm shrink-0">
+                  EM
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-slate-900">Dra. Elena Morales</h4>
+                  <p class="text-xs text-blue-700 font-medium">Jefa de Redacción y Análisis Corporativo</p>
+                  <p class="text-[11px] text-slate-500 mt-0.5">Docente universitaria e investigadora de políticas públicas.</p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-4 bg-white p-3.5 rounded-xl border border-slate-200/80 shadow-sm">
+                <div class="w-12 h-12 rounded-full bg-slate-700 text-white flex items-center justify-center font-bold text-sm shrink-0">
+                  AS
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-slate-900">Lic. Andrea Salgado</h4>
+                  <p class="text-xs text-blue-700 font-medium">Coordinadora de Innovación y Tecnología</p>
+                  <p class="text-[11px] text-slate-500 mt-0.5">Cobertura de telecomunicaciones, software y transformación digital.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Sección de Contacto Formal -->
+    <section id="contacto" class="py-16 bg-slate-50 border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="text-xs font-bold uppercase tracking-wider text-blue-700">Canales Oficiales</span>
+          <h2 class="text-3xl font-extrabold text-brand-900 font-serif">Contacto Editorial e Institucional</h2>
+          <p class="text-slate-600 text-sm mt-2">
+            Póngase en contacto con nuestra redacción para sugerencias de temas, aclaraciones informativas, solicitudes de prensa o consultas de cumplimiento.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          <!-- Información de Contacto Visible (Clave para KYC) -->
+          <div class="lg:col-span-5 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col justify-between">
+            <div>
+              <h3 class="font-serif font-bold text-lg text-brand-900 mb-6">Oficinas y Representación</h3>
+              
+              <ul class="space-y-5 text-sm">
+                <li class="flex items-start gap-3.5">
+                  <div class="p-2 bg-blue-50 text-brand-800 rounded-lg shrink-0 mt-0.5">
+                    <i data-lucide="mail" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <span class="block font-semibold text-slate-800">Correos Electrónicos Oficiales</span>
+                    <a href="mailto:contacto@notisur.com" class="text-blue-700 hover:underline block">contacto@notisur.com</a>
+                    <a href="mailto:info@notisur.com" class="text-blue-700 hover:underline block text-xs">info@notisur.com (Mesa de Redacción)</a>
+                  </div>
+                </li>
+
+                <li class="flex items-start gap-3.5">
+                  <div class="p-2 bg-blue-50 text-brand-800 rounded-lg shrink-0 mt-0.5">
+                    <i data-lucide="map-pin" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <span class="block font-semibold text-slate-800">Sede Editorial & Administración</span>
+                    <span class="text-slate-600">Av. Libertador Centro Financiero, Nivel 7, Ofic. 702.<br>Área Metropolitana, Dominio Web: notisur.com</span>
+                  </div>
+                </li>
+
+                <li class="flex items-start gap-3.5">
+                  <div class="p-2 bg-blue-50 text-brand-800 rounded-lg shrink-0 mt-0.5">
+                    <i data-lucide="clock" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <span class="block font-semibold text-slate-800">Horarios de Atención Editorial</span>
+                    <span class="text-slate-600">Lunes a Viernes: 08:00 - 18:00 (Hora Local)<br>Guardia informativa permanente.</span>
+                  </div>
+                </li>
+
+                <li class="flex items-start gap-3.5">
+                  <div class="p-2 bg-blue-50 text-brand-800 rounded-lg shrink-0 mt-0.5">
+                    <i data-lucide="shield" class="w-4 h-4"></i>
+                  </div>
+                  <div>
+                    <span class="block font-semibold text-slate-800">Oficial de Protección de Datos (DPO)</span>
+                    <span class="text-slate-600">Para revocaciones o derechos ARCO: <a href="mailto:privacidad@notisur.com" class="text-blue-700 hover:underline">privacidad@notisur.com</a></span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-slate-100 text-xs text-slate-500">
+              NotiSur respeta las regulaciones internacionales de telecomunicaciones y normativas aplicables de envíos de correo legítimos.
+            </div>
+          </div>
+
+          <!-- Formulario de Contacto Funcional UI -->
+          <div class="lg:col-span-7 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+            <h3 class="font-serif font-bold text-lg text-brand-900 mb-6">Envíenos un Mensaje</h3>
+            
+            <form id="contact-form" onsubmit="handleContactSubmit(event)" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label for="contact-name" class="block text-xs font-semibold text-slate-700 mb-1">Nombre Completo *</label>
+                  <input type="text" id="contact-name" required placeholder="Nombre y Apellidos"
+                         class="w-full px-3.5 py-2.5 border border-slate-300 rounded-lg text-sm text-slate-800 focus:ring-2 focus:ring-brand-800 focus:outline-none">
+                </div>
+                <div>
+                  <label for="contact-email" class="block text-xs font-semibold text-slate-700 mb-1">Correo Electrónico *</label>
+                  <input type="email" id="contact-email" required placeholder="su-correo@empresa.com"
+                         class="w-full px-3.5 py-2.5 border border-slate-300 rounded-lg text-sm text-slate-800 focus:ring-2 focus:ring-brand-800 focus:outline-none">
+                </div>
+              </div>
+
+              <div>
+                <label for="contact-subject" class="block text-xs font-semibold text-slate-700 mb-1">Asunto de la Comunicación *</label>
+                <select id="contact-subject" required class="w-full px-3.5 py-2.5 border border-slate-300 rounded-lg text-sm text-slate-800 focus:ring-2 focus:ring-brand-800 focus:outline-none bg-white">
+                  <option value="">Seleccione el motivo de contacto...</option>
+                  <option value="editorial">Propuesta o nota para el equipo editorial</option>
+                  <option value="newsletter">Consulta sobre el Boletín de Noticias / Newsletter</option>
+                  <option value="prensa">Comunicado de Prensa Corporativo</option>
+                  <option value="privacidad">Consulta de Privacidad / Derechos de Datos</option>
+                  <option value="otro">Otro requerimiento general</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="contact-message" class="block text-xs font-semibold text-slate-700 mb-1">Mensaje *</label>
+                <textarea id="contact-message" rows="4" required placeholder="Escriba aquí los detalles de su consulta..."
+                          class="w-full px-3.5 py-2.5 border border-slate-300 rounded-lg text-sm text-slate-800 focus:ring-2 focus:ring-brand-800 focus:outline-none"></textarea>
+              </div>
+
+              <div class="flex items-start space-x-2.5 pt-1">
+                <input type="checkbox" id="contact-consent" required class="mt-1 w-4 h-4 rounded border-slate-300 text-brand-800 focus:ring-brand-800">
+                <label for="contact-consent" class="text-xs text-slate-600">
+                  He leído y acepto la <button type="button" onclick="openModal('modal-privacy')" class="text-blue-700 underline font-medium">Política de Privacidad</button> para la tramitación de esta consulta.
+                </label>
+              </div>
+
+              <div class="pt-2">
+                <button type="submit" id="contact-submit-btn" class="w-full sm:w-auto px-8 py-3 bg-brand-900 hover:bg-brand-800 text-white text-sm font-semibold rounded-lg shadow-sm transition flex items-center justify-center gap-2">
+                  <span>Enviar Mensaje</span>
+                  <i data-lucide="send" class="w-4 h-4"></i>
+                </button>
+              </div>
+
+              <div id="contact-success" class="hidden p-4 rounded-lg bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600 shrink-0"></i>
+                  <span>Mensaje recibido correctamente. Nuestro equipo de redacción o soporte le responderá a la brevedad posible.</span>
+                </div>
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Completo para Auditoría KYC / ZeptoMail / Compliance -->
+  <footer class="bg-brand-950 text-slate-300 pt-14 pb-8 border-t border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 pb-12 border-b border-slate-800">
+        
+        <!-- Identidad Institucional -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center space-x-2">
+            <span class="w-2.5 h-6 bg-blue-500 rounded-sm"></span>
+            <span class="text-xl font-bold tracking-tight text-white">NOTISUR</span>
+          </div>
+          <p class="text-xs text-slate-400 leading-relaxed max-w-sm">
+            Portal Digital de Información, actualidad y comunicación corporativa. NotiSur se enfoca en el análisis socioeconómico objetivo, innovación y cobertura de eventos de interés público.
+          </p>
+          <div class="text-xs text-slate-400 space-y-1">
+            <p><strong>Dominio principal:</strong> notisur.com</p>
+            <p><strong>Contacto institucional:</strong> contacto@notisur.com</p>
+          </div>
+        </div>
+
+        <!-- Secciones Rápidas -->
+        <div>
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Secciones</h4>
+          <ul class="space-y-2 text-xs text-slate-400">
+            <li><a href="#inicio" class="hover:text-white transition">Portada Principal</a></li>
+            <li><a href="#noticias" class="hover:text-white transition">Economía & Finanzas</a></li>
+            <li><a href="#noticias" class="hover:text-white transition">Tecnología e Innovación</a></li>
+            <li><a href="#quienes-somos" class="hover:text-white transition">Línea Editorial</a></li>
+            <li><a href="#contacto" class="hover:text-white transition">Mesa de Entrada</a></li>
+          </ul>
+        </div>
+
+        <!-- Compliance y Marco Legal (Crucial KYC) -->
+        <div class="lg:col-span-2">
+          <h4 class="text-xs font-bold text-white uppercase tracking-wider mb-4">Políticas & Marco Legal</h4>
+          <p class="text-xs text-slate-400 mb-3">
+            Garantizamos transparencia y conformidad con normativas internacionales de protección de datos (GDPR) y directivas anti-spam:
+          </p>
+          <ul class="space-y-2 text-xs">
+            <li class="flex items-center justify-between">
+              <button onclick="openModal('modal-terms')" class="text-blue-400 hover:text-blue-300 transition text-left flex items-center gap-1.5">
+                <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+                Términos y Condiciones del Servicio
+              </button>
+              <a href="terminos-y-condiciones.html" class="text-[10px] text-slate-500 hover:text-slate-300 underline" title="Abrir en página independiente">Ver pág.</a>
+            </li>
+            <li class="flex items-center justify-between">
+              <button onclick="openModal('modal-privacy')" class="text-blue-400 hover:text-blue-300 transition text-left flex items-center gap-1.5">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+                Política de Privacidad y Tratamiento de Datos
+              </button>
+              <a href="politica-de-privacidad.html" class="text-[10px] text-slate-500 hover:text-slate-300 underline" title="Abrir en página independiente">Ver pág.</a>
+            </li>
+            <li class="flex items-center justify-between">
+              <button onclick="openModal('modal-email-policy')" class="text-blue-400 hover:text-blue-300 transition text-left flex items-center gap-1.5">
+                <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+                Política de Uso Aceptable y Comunicaciones Electrónicas
+              </button>
+              <a href="politica-comunicaciones.html" class="text-[10px] text-slate-500 hover:text-slate-300 underline" title="Abrir en página independiente">Ver pág.</a>
+            </li>
+          </ul>
+          <div class="mt-4 p-3 bg-slate-900 border border-slate-800 rounded-lg text-[11px] text-slate-400">
+            <span class="text-slate-300 font-semibold block mb-0.5">Naturaleza de nuestros correos:</span>
+            Las comunicaciones enviadas desde el dominio <strong>notisur.com</strong> son estrictamente transaccionales o basadas en suscripción confirmada voluntaria (Double Opt-In). Prohibimos el spam y nunca realizamos envíos masivos no autorizados.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright y Certificación -->
+      <div class="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500 gap-4">
+        <div>
+          Copyright &copy; 2026 <strong>NotiSur</strong>. Todos los derechos reservados.
+        </div>
+        <div class="flex items-center space-x-4 text-xs">
+          <span>Dominio Registrado & Verificado</span>
+          <span>•</span>
+          <span>Infraestructura Segura HTTPS</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==================== MODALES LEGALES Y DE ARTÍCULOS ==================== -->
+
+  <!-- Modal 1: Términos y Condiciones del Servicio -->
+  <div id="modal-terms" class="fixed inset-0 z-50 hidden modal-backdrop overflow-y-auto p-4 sm:p-6 flex items-center justify-center">
+    <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-slate-200">
+      <div class="p-5 border-b border-slate-200 flex justify-between items-center bg-slate-50 rounded-t-2xl">
+        <div class="flex items-center gap-2 text-brand-900">
+          <i data-lucide="file-text" class="w-5 h-5 text-blue-700"></i>
+          <h3 class="font-serif font-bold text-lg">Términos y Condiciones del Servicio</h3>
+        </div>
+        <button onclick="closeModal('modal-terms')" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="p-6 overflow-y-auto text-sm text-slate-700 space-y-4 leading-relaxed">
+        <p class="text-xs text-slate-500">Última actualización: Enero 2026 | Dominio oficial: notisur.com</p>
+        
+        <h4 class="font-bold text-slate-900 text-base">1. Objeto y Titularidad</h4>
+        <p>El presente documento regula el acceso, uso y navegación del portal web disponible bajo el dominio <strong>notisur.com</strong> (en adelante, "NotiSur" o "el Sitio Web"). NotiSur es un medio digital dedicado a la publicación de noticias, artículos de opinión, análisis económico y contenido corporativo de interés general.</p>
+
+        <h4 class="font-bold text-slate-900 text-base">2. Condiciones de Acceso y Uso</h4>
+        <p>El acceso al Sitio Web es libre y gratuito. El usuario se compromete a hacer un uso diligente, correcto y lícito de los contenidos y servicios ofrecidos, absteniéndose de emplearlos con fines ilegales, lesivos de los derechos o intereses de terceros, o que puedan dañar o sobrecargar los servidores de NotiSur.</p>
+
+        <h4 class="font-bold text-slate-900 text-base">3. Propiedad Intelectual</h4>
+        <p>Todos los contenidos, incluyendo pero sin limitarse a textos, fotografías, gráficos, logotipos, marcas, iconos y código fuente, son propiedad exclusiva de NotiSur o de sus respectivos licenciantes, encontrándose protegidos por las leyes de propiedad intelectual y derechos de autor vigentes.</p>
+
+        <h4 class="font-bold text-slate-900 text-base">4. Servicios de Correo y Suscripciones (Opt-In Confirmado)</h4>
+        <p>El portal pone a disposición de los usuarios un sistema de boletín informativo o newsletter. El alta en este servicio requiere la solicitud voluntaria y expresa del usuario mediante verificación en dos pasos (Double Opt-In). NotiSur no envía correspondencia electrónica no solicitada. Cualquier suscriptor podrá revocar su consentimiento en cualquier momento mediante el enlace provisto al pie de cada comunicado.</p>
+
+        <h4 class="font-bold text-slate-900 text-base">5. Limitación de Responsabilidad</h4>
+        <p>NotiSur no garantiza la disponibilidad ininterrumpida del sitio y no se hace responsable por eventuales interrupciones técnicas originadas por fallas en la red o causas de fuerza mayor. El contenido informativo es de carácter estrictamente periodístico y analítico.</p>
+
+        <h4 class="font-bold text-slate-900 text-base">6. Legislación Aplicable</h4>
+        <p>Estos términos se rigen por la legislación vigente aplicable en materia de comercio electrónico, servicios de la sociedad de la información y protección de los consumidores.</p>
+      </div>
+      <div class="p-4 border-t border-slate-200 bg-slate-50 flex justify-end rounded-b-2xl">
+        <button onclick="closeModal('modal-terms')" class="px-5 py-2 bg-brand-900 hover:bg-brand-800 text-white rounded-lg text-sm font-medium transition">
+          Entendido y Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 2: Política de Privacidad y Tratamiento de Datos (GDPR/Compliance) -->
+  <div id="modal-privacy" class="fixed inset-0 z-50 hidden modal-backdrop overflow-y-auto p-4 sm:p-6 flex items-center justify-center">
+    <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-slate-200">
+      <div class="p-5 border-b border-slate-200 flex justify-between items-center bg-slate-50 rounded-t-2xl">
+        <div class="flex items-center gap-2 text-brand-900">
+          <i data-lucide="shield-check" class="w-5 h-5 text-emerald-600"></i>
+          <h3 class="font-serif font-bold text-lg">Política de Privacidad y Tratamiento de Datos</h3>
+        </div>
+        <button onclick="closeModal('modal-privacy')" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="p-6 overflow-y-auto text-sm text-slate-700 space-y-4 leading-relaxed">
+        <p class="text-xs text-slate-500">Conforme al Reglamento General de Protección de Datos (GDPR) y normativas de privacidad vigentes | 2026</p>
+
+        <h4 class="font-bold text-slate-900 text-base">1. Responsable del Tratamiento</h4>
+        <p>El responsable del tratamiento de los datos recabados en este sitio web es el equipo editorial y administrativo de <strong>NotiSur</strong>, con domicilio digital en el dominio <strong>notisur.com</strong> y correo de contacto para temas de privacidad: <strong>privacidad@notisur.com</strong>.</p>
+
+        <h4 class="font-bold text-slate-900 text-base">2. Finalidad del Tratamiento de Datos</h4>
+        <p>Los datos personales proporcionados por los usuarios (como nombre y correo electrónico) se recaban y procesan con las siguientes finalidades exclusivas:</p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>Gestión de Newsletter / Boletín Informativo:</strong> Envío de resúmenes periodísticos, notas de actualidad y alertas de noticias de NotiSur solicitadas voluntariamente por el usuario.</li>
+          <li><strong>Respuestas a Solicitudes de Contacto:</strong> Tramitación de mensajes, dudas editoriales o sugerencias remitidas a través del formulario de contacto.</li>
+          <li><strong>Notificaciones Transaccionales:</strong> Verificación de dirección de correo electrónico mediante mecanismo Double Opt-In.</li>
+        </ul>
+
+        <h4 class="font-bold text-slate-900 text-base">3. Base Legal y Consentimiento Explícito</h4>
+        <p>La base legal para el tratamiento de los datos es el <strong>consentimiento inequívoco y explícito</strong> otorgado por el usuario al marcar la casilla de aceptación en nuestros formularios. En ningún caso NotiSur recopila datos de manera pasiva con fines de comercialización a terceros.</p>
+
+        <h4 class="font-bold text-slate-900 text-base">4. Proveedores de Infraestructura de Correo</h4>
+        <p>Para la entrega segura y trazable de nuestras comunicaciones informativas y transaccionales, NotiSur utiliza plataformas profesionales de infraestructura de correo electrónico empresarial (como Zoho CPaaS / ZeptoMail). Dichos proveedores actúan en calidad de encargados de tratamiento y cumplen con estándares rigurosos de cifrado TLS, autenticación SPF, DKIM y DMARC.</p>
+
+        <h4 class="font-bold text-slate-900 text-base">5. Conservación de Datos y Derechos ARCO</h4>
+        <p>Los datos se conservarán únicamente mientras el usuario mantenga activa su suscripción o no solicite su supresión. El usuario puede ejercer en cualquier momento sus derechos de Acceso, Rectificación, Cancelación, Oposición y Portabilidad enviando un correo a <strong>privacidad@notisur.com</strong> o haciendo clic en el enlace de desuscripción al pie de cada correo recibido.</p>
+      </div>
+      <div class="p-4 border-t border-slate-200 bg-slate-50 flex justify-end rounded-b-2xl">
+        <button onclick="closeModal('modal-privacy')" class="px-5 py-2 bg-brand-900 hover:bg-brand-800 text-white rounded-lg text-sm font-medium transition">
+          Aceptar y Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 3: Política de Uso Aceptable y Comunicaciones Electrónicas (Crucial ZeptoMail / Anti-Spam) -->
+  <div id="modal-email-policy" class="fixed inset-0 z-50 hidden modal-backdrop overflow-y-auto p-4 sm:p-6 flex items-center justify-center">
+    <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-slate-200">
+      <div class="p-5 border-b border-slate-200 flex justify-between items-center bg-slate-50 rounded-t-2xl">
+        <div class="flex items-center gap-2 text-brand-900">
+          <i data-lucide="mail-warning" class="w-5 h-5 text-blue-700"></i>
+          <h3 class="font-serif font-bold text-lg">Política de Uso Aceptable y Comunicaciones Electrónicas</h3>
+        </div>
+        <button onclick="closeModal('modal-email-policy')" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="p-6 overflow-y-auto text-sm text-slate-700 space-y-4 leading-relaxed">
+        <p class="text-xs text-slate-500">Estándar Anti-Spam y Requisitos de Entrega Segura | Dominio notisur.com</p>
+
+        <h4 class="font-bold text-slate-900 text-base">1. Compromiso de Cero Tolerancia al Spam</h4>
+        <p>NotiSur mantiene una estricta política de tolerancia cero frente al envío de correo masivo no solicitado (SPAM). Todas las transmisiones generadas desde los servidores o infraestructura SMTP/API asociada a <strong>notisur.com</strong> cumplen rigurosamente con la Ley CAN-SPAM, la Directiva Europea 2002/58/CE y las políticas de uso aceptable de servicios CPaaS (Zoho / ZeptoMail).</p>
+
+        <h4 class="font-bold text-slate-900 text-base">2. Tipología Exclusiva de Envíos</h4>
+        <p>Los correos electrónicos emitidos por NotiSur pertenecen únicamente a dos categorías:</p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>Comunicaciones Transaccionales:</strong> Confirmaciones de registro, verificación de correo electrónico mediante token/enlace único (Double Opt-In), acuses de recibo de contacto y notificaciones de seguridad del sistema.</li>
+          <li><strong>Boletines Periodísticos Voluntarios:</strong> Resúmenes de noticias remitidos exclusivamente a destinatarios que completaron activamente el formulario de suscripción y verificaron su dirección de correo.</li>
+        </ul>
+
+        <h4 class="font-bold text-slate-900 text-base">3. Prohibición de Listas Adquiridas</h4>
+        <p>NotiSur no adquiere, alquila, vende ni utiliza bases de datos de correos electrónicos provistas por terceros o raspadas de la web (web scraping). Todo contacto registrado en nuestra base proviene de una acción voluntaria y auditable en <strong>https://notisur.com</strong>.</p>
+
+        <h4 class="font-bold text-slate-900 text-base">4. Mecanismo de Baja Inmediata (One-Click Unsubscribe)</h4>
+        <p>Cada correo electrónico de contenido periódico contiene en su pie de página un enlace transparente y funcional que permite al suscriptor darse de baja de forma inmediata sin demoras ni requisitos adicionales. Asimismo, nuestros encabezados de correo incorporan cabeceras estándar <code>List-Unsubscribe</code> para clientes de correo modernos.</p>
+
+        <h4 class="font-bold text-slate-900 text-base">5. Autenticación de Dominio</h4>
+        <p>El dominio notisur.com cuenta con registros DNS autoritativos para <strong>SPF</strong> (Sender Policy Framework), <strong>DKIM</strong> (DomainKeys Identified Mail) y directiva <strong>DMARC</strong> alineada, garantizando la legitimidad del remitente y previniendo la suplantación de identidad (spoofing o phishing).</p>
+      </div>
+      <div class="p-4 border-t border-slate-200 bg-slate-50 flex justify-end rounded-b-2xl">
+        <button onclick="closeModal('modal-email-policy')" class="px-5 py-2 bg-brand-900 hover:bg-brand-800 text-white rounded-lg text-sm font-medium transition">
+          Entendido y Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal 4: Visor de Noticia Completa -->
+  <div id="modal-article" class="fixed inset-0 z-50 hidden modal-backdrop overflow-y-auto p-4 sm:p-6 flex items-center justify-center">
+    <div class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-200">
+      <div class="p-5 border-b border-slate-200 flex justify-between items-center bg-slate-50 rounded-t-2xl">
+        <span id="article-badge" class="text-xs font-bold uppercase tracking-wider text-blue-700 bg-blue-50 px-2.5 py-1 rounded">
+          Categoría
+        </span>
+        <button onclick="closeModal('modal-article')" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="p-6 sm:p-8 overflow-y-auto space-y-4">
+        <h2 id="article-title" class="text-2xl sm:text-3xl font-serif font-bold text-slate-900 leading-snug">
+          Título del Reportaje
+        </h2>
+        <div class="flex items-center text-xs text-slate-500 space-x-3 pb-3 border-b border-slate-100">
+          <span id="article-author" class="font-medium text-slate-700">Por Autor</span>
+          <span>•</span>
+          <span id="article-date">Fecha</span>
+          <span>•</span>
+          <span>NotiSur Redacción Central</span>
+        </div>
+        <img id="article-img" src="" alt="" class="w-full h-64 object-cover rounded-xl my-4">
+        <div id="article-content" class="text-slate-700 text-sm sm:text-base leading-relaxed space-y-3 font-serif">
+          <!-- Contenido inyectado por JS -->
+        </div>
+      </div>
+      <div class="p-4 border-t border-slate-200 bg-slate-50 flex justify-between items-center rounded-b-2xl">
+        <span class="text-xs text-slate-500">NotiSur | Verificación Periodística Certificada</span>
+        <button onclick="closeModal('modal-article')" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-xs font-semibold">
+          Cerrar Lectura
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Modular y Lógica UI -->
+  <script>
+    // Inicializar Iconos Lucide
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+    });
+
+    // Artículos de muestra con contenido serio y redactado
+    const articlesData = {
+      p1: {
+        badge: "Economía & Finanzas",
+        title: "Infraestructura logística e integración portuaria: el motor de la recuperación productiva regional",
+        author: "Lic. Marcos V. Rivas",
+        date: "06 de Octubre, 2026",
+        img: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?auto=format&fit=crop&w=1200&q=80",
+        content: `
+          <p>Durante el último trimestre, las cadenas de suministro de la región han experimentado una transformación notable impulsada por la renovación integral de corredores viales estratégicos y la modernización de los nodos portuarios de aguas profundas.</p>
+          <p>De acuerdo con informes de cámaras de comercio y comisiones mixtas de transporte, la reducción de los tiempos muertos en frontera ha alcanzado un 24%, lo que incide directamente en los costos finales de fletes para productos agrícolas y bienes manufacturados.</p>
+          <p>“La integración no es un concepto abstracto, sino un factor determinante en la competitividad de las pequeñas y medianas empresas exportadoras”, destacaron voceros de las entidades multilaterales durante la cumbre de comercio e infraestructura.</p>
+          <p>Se anticipa que para el próximo ejercicio fiscal se concrete una inversión complementaria en sistemas de seguimiento aduanero digitalizado, consolidando una red logística más ágil, transparente y resistente a contingencias climáticas.</p>
+        `
+      },
+      p2: {
+        badge: "Tecnología",
+        title: "Ciberseguridad y soberanía de datos en los sistemas empresariales modernos",
+        author: "Redacción Tech NotiSur",
+        date: "06 de Octubre, 2026",
+        img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80",
+        content: `
+          <p>El incremento en el volumen de transacciones digitales y la adopción de esquemas de trabajo distribuidos han situado a la ciberseguridad en el centro de las prioridades de los comités de dirección corporativa.</p>
+          <p>Especialistas del área coinciden en que la implementación de arquitecturas 'Zero Trust' (Confianza Cero) y la adopción de protocolos de autenticación robustos resultan imprescindibles para prevenir filtraciones de información sensible y resguardar la continuidad operativa.</p>
+          <p>Asimismo, los marcos regulatorios actuales exigen a las organizaciones implementar controles estrictos sobre el tratamiento y retención de datos personales, elevando el estándar de cumplimiento en toda la industria.</p>
+        `
+      },
+      p3: {
+        badge: "Empresas & ESG",
+        title: "Transición energética y criterios ESG en compañías del cono sur",
+        author: "Dra. Elena Morales",
+        date: "05 de Octubre, 2026",
+        img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
+        content: `
+          <p>La adopción de criterios ambientales, sociales y de gobernanza (ESG) ha dejado de ser un elemento meramente reputacional para convertirse en un parámetro decisivo en el acceso a líneas de financiamiento internacional y colocaciones en mercados de bonos verdes.</p>
+          <p>Compañías del sector industrial y de servicios avanzan aceleradamente en auditorías de eficiencia energética, incorporando parques fotovoltaicos para autoconsumo y optimizando los procesos de reciclaje de recursos hídricos.</p>
+        `
+      },
+      p4: {
+        badge: "Conectividad",
+        title: "Despliegue de fibra óptica y conectividad satelital en zonas productivas rurales",
+        author: "Carlos Benítez",
+        date: "05 de Octubre, 2026",
+        img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80",
+        content: `
+          <p>La expansión de redes de conectividad troncal y constelaciones satelitales de baja órbita está cerrando la brecha digital en regiones agropecuarias que históricamente carecían de acceso telemático estable.</p>
+          <p>Este avance permite a cooperativas de productores incorporar telemetría climática, gestión remota de maquinarias y facturación electrónica instantánea, optimizando sensiblemente la productividad del campo.</p>
+        `
+      },
+      p5: {
+        badge: "Sociedad & Urbanismo",
+        title: "Modernización urbana y movilidad inteligente en ciudades intermedias",
+        author: "Lic. Andrea Salgado",
+        date: "05 de Octubre, 2026",
+        img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
+        content: `
+          <p>Planes directores de movilidad sostenible están reconfigurando el transporte público en centros urbanos emergentes. La sincronización semafórica inteligente y la incorporación de flotas de autobuses eléctricos reducen los tiempos de traslado y la emisión de partículas contaminantes.</p>
+        `
+      },
+      p6: {
+        badge: "Mercados Financieros",
+        title: "Estabilidad monetaria e impacto en las tasas de interés corporativas",
+        author: "Fernando Castro",
+        date: "04 de Octubre, 2026",
+        img: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=800&q=80",
+        content: `
+          <p>Los indicadores recientes reflejan una desaceleración en las presiones de precios al consumidor, lo que allana el camino para que las entidades financieras mantengan tasas de colocación más predecibles en los segmentos de capital de trabajo y leasing de maquinarias.</p>
+        `
+      },
+      p7: {
+        badge: "Salud & Ciencia",
+        title: "Nuevos centros de diagnóstico biomédico refuerzan la red sanitaria",
+        author: "Lic. Sofía Paredes",
+        date: "03 de Octubre, 2026",
+        img: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80",
+        content: `
+          <p>Con financiamiento mixto y alianzas interinstitucionales, se inauguraron modernos laboratorios que permitirán descentralizar análisis de alta complejidad, reduciendo las listas de espera en centros asistenciales regionales.</p>
+        `
+      }
+    };
+
+    // Funciones de Control de Modales
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.remove('hidden');
+        document.body.classList.add('overflow-hidden');
+      }
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }
+    }
+
+    // Modal de Noticia Dinámica
+    function openArticleModal(id) {
+      const article = articlesData[id];
+      if (!article) return;
+
+      document.getElementById('article-badge').textContent = article.badge;
+      document.getElementById('article-title').textContent = article.title;
+      document.getElementById('article-author').textContent = article.author;
+      document.getElementById('article-date').textContent = article.date;
+      document.getElementById('article-img').src = article.img;
+      document.getElementById('article-img').alt = article.title;
+      document.getElementById('article-content').innerHTML = article.content;
+
+      openModal('modal-article');
+    }
+
+    // Cerrar modal al hacer click en el backdrop
+    window.addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal-backdrop')) {
+        e.target.classList.add('hidden');
+        document.body.classList.remove('overflow-hidden');
+      }
+    });
+
+    // Menú Mobile
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Cerrar menú mobile al hacer clic en un link
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Manejo de Formulario Newsletter (Double Opt-in UI Feedback)
+    function handleNewsletterSubmit(e) {
+      e.preventDefault();
+      const submitBtn = document.getElementById('newsletter-submit-btn');
+      const successDiv = document.getElementById('newsletter-success');
+      const nameInput = document.getElementById('newsletter-name');
+      const emailInput = document.getElementById('newsletter-email');
+      const consentInput = document.getElementById('newsletter-consent');
+
+      if (!consentInput.checked) {
+        alert("Debe aceptar los Términos y la Política de Privacidad para continuar.");
+        return;
+      }
+
+      // Simulación de envío confiable
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <svg class="animate-spin -ml-1 mr-3 h-4 w-4 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+        </svg>
+        Procesando suscripción segura...
+      `;
+
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<span>Suscripción Solicitada</span> <i data-lucide="check" class="w-4 h-4"></i>`;
+        successDiv.classList.remove('hidden');
+        nameInput.value = '';
+        emailInput.value = '';
+        consentInput.checked = false;
+        lucide.createIcons();
+      }, 1200);
+    }
+
+    // Manejo de Formulario de Contacto
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const submitBtn = document.getElementById('contact-submit-btn');
+      const successDiv = document.getElementById('contact-success');
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `
+        <svg class="animate-spin -ml-1 mr-3 h-4 w-4 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+        </svg>
+        Enviando...
+      `;
+
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<span>Mensaje Enviado</span> <i data-lucide="check" class="w-4 h-4"></i>`;
+        successDiv.classList.remove('hidden');
+        document.getElementById('contact-form').reset();
+        lucide.createIcons();
+      }, 1000);
+    }
+  </script>
+</body>
+</html>

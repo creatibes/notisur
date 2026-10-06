@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Política de Uso Aceptable y Comunicaciones Electrónicas | NotiSur</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col justify-between">
+  <header class="bg-white border-b border-slate-200 py-4 shadow-sm">
+    <div class="max-w-4xl mx-auto px-4 flex justify-between items-center">
+      <a href="index.html" class="flex items-center space-x-2">
+        <span class="w-2.5 h-6 bg-slate-900 rounded-sm"></span>
+        <span class="text-xl font-bold tracking-tight text-slate-900">NOTISUR</span>
+      </a>
+      <a href="index.html" class="text-xs font-semibold text-blue-700 hover:underline">← Volver al Portal Principal</a>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-12 flex-1">
+    <div class="bg-white p-8 sm:p-12 rounded-2xl border border-slate-200 shadow-sm space-y-6 text-sm leading-relaxed text-slate-700">
+      <div class="border-b border-slate-100 pb-4">
+        <span class="text-xs font-bold text-blue-700 uppercase tracking-wider">Cumplimiento Antispam & KYC</span>
+        <h1 class="text-3xl font-serif font-bold text-slate-900 mt-1">Política de Uso Aceptable y Comunicaciones Electrónicas</h1>
+        <p class="text-xs text-slate-500 mt-1">Conforme a las directivas de ZeptoMail / Zoho CPaaS y estándares RFC anti-abuso | 2026</p>
+      </div>
+
+      <div class="p-4 bg-blue-50 border-l-4 border-blue-600 rounded-r-lg text-xs text-blue-900">
+        <strong>Declaración de Intención Operativa:</strong> Este documento establece las directrices ineludibles que rigen las emisiones de correo electrónico originadas desde el dominio <strong>notisur.com</strong> y su infraestructura asociada. NotiSur opera bajo una política de tolerancia cero al spam y las comunicaciones no deseadas.
+      </div>
+
+      <h2 class="text-lg font-bold text-slate-900 pt-2">1. Tipos de Correos Enviados</h2>
+      <p>Todas las comunicaciones salientes desde <strong>notisur.com</strong> se circunscriben estrictamente a:</p>
+      <ul class="list-disc pl-5 space-y-1">
+        <li><strong>Mensajes Transaccionales:</strong> Verificación de registro mediante Double Opt-In, acuses de recibo de consultas editoriales y alertas de seguridad de la cuenta o plataforma.</li>
+        <li><strong>Comunicaciones Informativas Solicitadas:</strong> Resúmenes de noticias y boletines de prensa enviados exclusivamente a lectores que han solicitado expresamente su suscripción.</li>
+      </ul>
+
+      <h2 class="text-lg font-bold text-slate-900 pt-2">2. Proceso de Doble Confirmación (Double Opt-In)</h2>
+      <p>Para asegurar que ningún usuario reciba correos sin su anuencia:</p>
+      <ol class="list-decimal pl-5 space-y-1">
+        <li>El usuario ingresa voluntariamente su nombre y correo en nuestro formulario público.</li>
+        <li>El sistema genera automáticamente un correo transaccional de verificación con un enlace temporal único.</li>
+        <li>La dirección se incorpora al listado de distribución únicamente después de que el usuario hace clic en dicho enlace confirmatorio.</li>
+      </ol>
+
+      <h2 class="text-lg font-bold text-slate-900 pt-2">3. Prohibición Terminante de Prácticas Ilícitas</h2>
+      <p>NotiSur asume el compromiso explícito de <strong>no incurrir bajo ninguna circunstancia</strong> en las siguientes prácticas:</p>
+      <ul class="list-disc pl-5 space-y-1">
+        <li>Compra, alquiler o intercambio de bases de datos de correo electrónico.</li>
+        <li>Recolección o raspado automatizado de direcciones de correo electrónico en la web (email scraping).</li>
+        <li>Uso de encabezados engañosos o líneas de asunto que disfracen el contenido real del mensaje.</li>
+        <li>Envío de comunicaciones comerciales de terceros o publicidad no solicitada (marketing de afiliados masivo no relacionado).</li>
+      </ul>
+
+      <h2 class="text-lg font-bold text-slate-900 pt-2">4. Mecanismo de Baja Inmediata (Unsubscribe Header & Footer)</h2>
+      <p>Todos los boletines emitidos cuentan con:</p>
+      <ul class="list-disc pl-5 space-y-1">
+        <li>Un enlace visible en el pie de página que permite tramitar la desuscripción en un único clic (One-Click Unsubscribe), sin requerir contraseñas ni procesos complejos.</li>
+        <li>Cabeceras estándar RFC 8058 (<code>List-Unsubscribe</code> y <code>List-Unsubscribe-Post</code>) implementadas a nivel de servidor para clientes de correo como Gmail, Outlook y Yahoo Mail.</li>
+      </ul>
+
+      <h2 class="text-lg font-bold text-slate-900 pt-2">5. Alineación Técnica y Reputación de Servidores (SPF, DKIM, DMARC)</h2>
+      <p>Los envíos del dominio <strong>notisur.com</strong> están respaldados por:</p>
+      <ul class="list-disc pl-5 space-y-1">
+        <li><strong>SPF:</strong> Registro DNS que valida la autorización expresa de los servidores remitentes autorizados por Zoho / ZeptoMail.</li>
+        <li><strong>DKIM:</strong> Firmas criptográficas que avalan la integridad y origen inalterado de los mensajes.</li>
+        <li><strong>DMARC:</strong> Política orientada al monitoreo riguroso del tráfico legítimo y rechazo estricto de intentos de suplantación.</li>
+      </ul>
+
+      <h2 class="text-lg font-bold text-slate-900 pt-2">6. Canal de Denuncias de Abuso</h2>
+      <p>Si considera que ha recibido un correo no autorizado proveniente de nuestra infraestructura, por favor reporte el incidente de inmediato a <a href="mailto:abuse@notisur.com" class="text-blue-700 underline font-medium">abuse@notisur.com</a> o <a href="mailto:contacto@notisur.com" class="text-blue-700 underline font-medium">contacto@notisur.com</a> para su resolución prioritaria.</p>
+    </div>
+  </main>
+
+  <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs border-t border-slate-800">
+    <div class="max-w-4xl mx-auto px-4">
+      <p>&copy; 2026 NotiSur (notisur.com). Política de Uso Aceptable de Correo Electrónico.</p>
+    </div>
+  </footer>
+</body>
+</html>
